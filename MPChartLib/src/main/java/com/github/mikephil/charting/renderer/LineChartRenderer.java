@@ -140,6 +140,8 @@ public class LineChartRenderer extends LineRadarRenderer {
 
         cubicPath.reset();
 
+        float intensity = dataSet.getCubicIntensity();
+
         if (mXBounds.range >= 1) {
 
             Entry prev = dataSet.getEntryForIndex(mXBounds.min);
@@ -157,9 +159,9 @@ public class LineChartRenderer extends LineRadarRenderer {
                         + (cur.getX() - prev.getX()) / 2.0f;
 
                 cubicPath.cubicTo(
-                        cpx, prev.getY() * phaseY,
-                        cpx, cur.getY() * phaseY,
-                        cur.getX(), cur.getY() * phaseY);
+                        cpx * intensity, prev.getY() * phaseY * intensity,
+                        cpx * intensity, cur.getY() * phaseY * intensity,
+                        cur.getX() * intensity, cur.getY() * phaseY * intensity);
             }
         }
 
