@@ -156,12 +156,12 @@ public class LineChartRenderer extends LineRadarRenderer {
                 cur = dataSet.getEntryForIndex(j);
 
                 final float cpx = (prev.getX())
-                        + (cur.getX() - prev.getX()) / 2.0f;
+                        + (cur.getX() - prev.getX()) * intensity;
 
                 cubicPath.cubicTo(
-                        cpx * intensity, prev.getY() * phaseY * intensity,
-                        cpx * intensity, cur.getY() * phaseY * intensity,
-                        cur.getX() * intensity, cur.getY() * phaseY * intensity);
+                        cpx, prev.getY() * phaseY,
+                        cpx, cur.getY() * phaseY,
+                        cur.getX() * intensity, cur.getY() * phaseY);
             }
         }
 
